@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+const mongoose = require('mongoose')
 
-const Cat = mongoose.model('Cat', { name: String });
+mongoose.connect('mongodb://localhost/galmakerdb')
 
-const kitty = new Cat({ name: 'Zildjian' });
-kitty.save().then(() => console.log('meow'));
+const Schema = mongoose.Schema
+
+module.exports = Schema
