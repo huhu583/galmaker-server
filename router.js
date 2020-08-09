@@ -5,8 +5,8 @@ var user = require('./bll/user/user')
 // 专门用来包装路由
 var router = express.Router()
 
-router.get('/', (req, res) => {
-    res.send("hello world")
+router.get('/huhu', (req, res) => {
+    res.send(JSON.parse('{"text":"hello world"}'))
 })
 
 // 传入用户名和密码,返回对应的字符串（加密）
