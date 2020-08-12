@@ -21,7 +21,10 @@ var userSchema = new Schema({
         type: Number,
     },
     introduce: {
-        type: String
+        type: String,
+    },
+    type: {
+        type: String,
     }
 });
 

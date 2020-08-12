@@ -32,10 +32,15 @@ module.exports = {
                 if (err) {
                     reject(err)
                 }
+                else if(res != null) {
+                    resolve(res)
+                }
                 else {
-                    resolve(res.userId)
+                    resolve(null);
                 }
             })
+        }, (err, res)=>{
+            reject(err)
         })
     }
 }
