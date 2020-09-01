@@ -1,7 +1,9 @@
 var express = require('express')
 var user = require('./bll/user/user')
 var game = require('./bll/game/game')
+var tip = require('./bll/tip/tip')
 var response = require('./response')
+const { rawListeners } = require('./dal/tip/tip')
 
 // Express提供了一种更好的方式
 // 专门用来包装路由
@@ -35,6 +37,36 @@ router.post('/game/create', (req, res) => {
     game.createGame(req.body).then((data) => {
         res.send(response(data))
     },(err)=> {
+        res.status(500).send(err)
+    })
+})
+
+router.get('/game/getCreateGameList', (req, res)=> {
+    // 这里传入userId
+    game.getCreateGameList(req.query.userId).then((data) => {
+        res.send(response(data))
+    },(err)=> {
+        res.status(500).send(err)
+    })
+})
+
+// 根据游戏ID列表获取所有游戏（用户收藏游戏）
+router.post('game/getGameListByIdList', (req, res) => { 
+    game.getGameListByIdList(req.body).then((data) => {
+        res.send(response(data))
+    },(err)=> {
+        res.status(500).send(err)
+    })
+})
+
+//#endregion
+
+//#region 
+
+router.get('/game/getAllTips', (req, res) => {
+    tip.getAllTips().then((data)=>{
+        res.send(response(data))
+    }, (err)=>{
         res.status(500).send(err)
     })
 })

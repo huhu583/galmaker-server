@@ -12,6 +12,11 @@ var gameSchema = new Schema({
         type: String,
         required: true
     },
+    // 创建人
+    creator: {
+        type: String,
+        required: true
+    },
     // 热度
     hot: {
         type: Number,
@@ -24,6 +29,11 @@ var gameSchema = new Schema({
     introduce: {
         type: String,
     },
+    // 游戏状态(0：开发中, 1：已发布)
+    state: {
+        type: Number,
+        required: true
+    }
 });
 
 module.exports = mongoose.model("Game", gameSchema)
