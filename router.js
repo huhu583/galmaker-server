@@ -33,14 +33,6 @@ router.post('/user/create', (req, res) => {
 
 //#region 游戏列表相关路由
 
-router.post('/game/create', (req, res) => {
-    game.createGame(req.body).then((data) => {
-        res.send(response(data))
-    },(err)=> {
-        res.status(500).send(err)
-    })
-})
-
 router.get('/game/getCreateGameList', (req, res)=> {
     // 这里传入userId
     game.getCreateGameList(req.query.userId).then((data) => {
